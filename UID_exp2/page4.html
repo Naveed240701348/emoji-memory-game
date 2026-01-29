@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Final Score</title>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #b3e5fc, #e1f5fe);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    .score-card {
+      background: white;
+      padding: 45px 65px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.6s ease-in-out;
+      width: 380px;
+    }
+
+    h1 {
+      font-size: 34px;
+      margin-bottom: 15px;
+    }
+
+    .score-text {
+      font-size: 30px;
+      font-weight: bold;
+      color: #1976d2;
+      margin: 20px 0;
+    }
+
+    .progress {
+      background: #e0e0e0;
+      border-radius: 10px;
+      height: 14px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #4caf50;
+      transition: width 0.8s ease;
+    }
+
+    .message {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 14px 34px;
+      font-size: 18px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #43a047;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="score-card">
+    <h1>🎯 Game Over</h1>
+
+    <p class="score-text" id="scoreText"></p>
+
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <p class="message" id="message"></p>
+
+    <button onclick="playAgain()">Play Again</button>
+  </div>
+
+  <script>
+    const score = Number(localStorage.getItem("finalScore")) || 0;
+    const total = 5;
+
+    const scoreText = document.getElementById("scoreText");
+    const message = document.getElementById("message");
+    const progressBar = document.getElementById("progressBar");
+
+    scoreText.textContent = `Your Score: ${score} / ${total}`;
+    progressBar.style.width = (score / total) * 100 + "%";
+
+    if (score >= 4) {
+      message.textContent = "Excellent Memory! 🧠🔥";
+    } else if (score >= 2) {
+      message.textContent = "Good Job! 👍";
+    } else {
+      message.textContent = "Try Again! 💪";
+    }
+
+    function playAgain() {
+      localStorage.clear();
+      window.location.href = "index.html";
+    }
+  </script>
+
+</body>
+</html>
