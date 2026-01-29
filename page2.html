@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Emoji Display</title>
+    </head>
+    <body>
+        <h1>Try to Remember emojis as much as possible</h1>
+        <div class="timer-bar">
+  <div class="timer-fill" id="timerFill"></div>
+</div>
+<p id="timerText">5 seconds left</p>
+
+<p id="timerText"></p>
+        <img src="emojis.png">
+        <a href="page3.html" class="start-link">
+    </body>  
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+            background-color: lightblue;
+        }
+        .start-btn {
+            background-color: darkblue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .timer-bar {
+  width: 60%;
+  height: 14px;
+  background: #ddd;
+  border-radius: 10px;
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+.timer-fill {
+  height: 100%;
+  width: 100%;
+  background: darkred;
+  transition: width 1s linear;
+}
+
+    </style> 
+    <script>
+  let time = 5;
+  const timerText = document.getElementById("timerText");
+  const fill = document.getElementById("timerFill");
+
+  const timer = setInterval(() => {
+    time--;
+    timerText.textContent = `${time} seconds left`;
+    fill.style.width = (time / 5) * 100 + "%";
+
+    if (time === 0) {
+      clearInterval(timer);
+      window.location.href = "page3.html";
+    }
+  }, 1000);
+</script>
+
+
+</html>

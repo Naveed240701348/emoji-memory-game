@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Select Remembered Emojis</title>
+    </head>
+    <body>
+        <h2>Select the emojis you remember</h2>
+        <form id="emojiForm" class="emoji-form"> 
+  <label class="emoji-item">
+    <input type="checkbox" value="😂">
+    <span class="emoji">😂</span>
+  </label>
+
+  <label class="emoji-item">
+    <input type="checkbox" value="😍">
+    <span class="emoji">😍</span>
+  </label>
+
+  <label class="emoji-item">
+    <input type="checkbox" value="😁">
+    <span class="emoji">😁</span>
+  </label>
+
+  <label class="emoji-item">
+    <input type="checkbox" value="😴">
+    <span class="emoji">😴</span>
+  </label>
+
+  <label class="emoji-item">
+    <input type="checkbox" value="🤯">
+    <span class="emoji">🤯</span>
+  </label>
+  <label class="emoji-item">
+    <input type="checkbox" value="😇">
+    <span class="emoji">😇</span>
+  </label>
+  <label class="emoji-item">
+    <input type="checkbox" value="😀">
+    <span class="emoji">😀</span>
+  </label>
+
+  <button type="submit">Submit</button>
+</form>
+
+     </body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+            background-color: lightblue;
+        }
+        .emoji-form {
+  margin-top: 30px;
+}
+
+.emoji-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+/* Bigger checkbox */
+.emoji-item input[type="checkbox"] {
+  transform: scale(1.8);
+}
+
+/* Bigger emoji */
+.emoji {
+  font-size: 36px;
+}
+
+/* Bigger submit button */
+button {
+   background-color: darkblue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+}
+
+        
+    </style>
+    <script>
+  const correctEmojis = ["😂","😁","😍","😀","😇"]; // emojis from page 2
+
+  document.getElementById("emojiForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // stop form reload
+
+    let score = 0;
+
+    const checkedBoxes = document.querySelectorAll(
+      'input[type="checkbox"]:checked'
+    );
+
+    checkedBoxes.forEach((box) => {
+      if (correctEmojis.includes(box.value)) {
+        score++;      // correct
+    } 
+    });
+
+    // store score
+    localStorage.setItem("finalScore", score);
+
+    // go to page 4
+    window.location.href = "page4.html";
+  });
+</script>
+
+</html>
